@@ -1,7 +1,7 @@
 # APMAE4990 - Introduction to Data Science in Industry
 
 ### Instructor: Dorian Goldman
-### Term: Winter 2016
+### Term: Fall 2016
 
 ### Objectives: 
 This course is designed for graduate and advanced undergraduate students who wish to learn the fundamentals of data science and machine learning in the context of real world applications. An em- phasis will be placed on problems that companies such as Amazon, Booking.com, Netflix and others use with a slight emphasis on problems arising at The New York Times, where I am currently a data scientist. Despite a focus on applications, the course will be mathematically rigorous, but the goal is to motivate each theorem and problem by a concrete problem arising in industry. The course will follow an online iPython notebook where students can try out various algorithms in real time as we go through the course.
@@ -16,3 +16,15 @@ This course is designed for graduate and advanced undergraduate students who wis
 
 ### Paper Distribution
 - The paper distribution problem at The New York Times.- Reivew of Random Variables and Distributions.- Time Series Models. Auto Regressive. Poisson Regression. Negative Binomial Regression.- The Newsvendor Problem and profit optimization.
+
+# References
+
+ These are references to deepen your understanding of material presented in lecture. The list is by no means exhaustive.		
+
+Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani, *An Introduction to Statistical Learning*, Springer 2013		 				
+			
+Trevor Hastie, Robert Tibshirani, Jerome Friedman, *Elements of Statistical Learning*, Springer 2013						 					
+
+Christopher M. Bishop, *Pattern Recognition and Machine Learning*, Springer, 2006.						 							
+
+Cameron Davidson-Pilon, *Bayesian Methods for Hackers*, https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers	
