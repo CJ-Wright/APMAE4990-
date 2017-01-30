@@ -10,7 +10,10 @@ This course is designed for graduate and advanced undergraduate students who wis
 There will be no midterms or exams, but rather assignments which will be handed in periodically throughout the term. The final project will be yours to choose, but will ideally be a productionalized tool developed via a web app that uses some of the methods (or others) taught in this class to solve a concrete problem.
 
 ###Prerequisites:
- Exposure to undergraduate-level probability, statistics, graph theory, algorithms, and linear algebra is strongly encouraged, but these topics will be covered as we encounter them.## Tentative Course Outline:
+ Exposure to undergraduate-level probability, statistics, graph theory, algorithms, and linear algebra is strongly encouraged, but these topics will be covered as we encounter them.### Grading:
+- 30% Assignments
+- 70% Final Project
+## Tentative Course Outline:
 ### Introduction- Problems that arise in industry involving data.- Introduction to regression, classification, clustering. Model training and evaluation.
 ###  Predictive learning (Supervised)
 - Predicting Virality of Content (Regression. Linear Regression,Random Forest )- User Churn, Acquisition and Conversion. (Classification. Exponential Family.)- Model selection and feature selection. Regularization. Real world performance evaluation.### Descriptive Learning (Unsupervised)- Clustering users (Clustering and Support Vector Machines)- Correlation of features. Principle Component Analysis.### Prescriptive Modeling and A/B tests- A/B experiments. Causal inference introduction.- Uplift Modeling. How do we target who should have received treatment?### Intro to Data Engineering- Map Reduce. SQL. Bash.### Recommendation Engines and Personalziation- Diffusion on Graph and NYT Article Recommendations.- Topic Modeling.- Introduction to Bayesian statistics. Bayesian vs. Frequentist approach.- Multi-armed Bandits. Thompson Sampling. LinUCB.- Cold Starts. Continous Cold starts. Warm Starts. uTime Series Analysis and 
