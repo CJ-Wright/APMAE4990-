@@ -80,27 +80,46 @@ Let $\beta = (\beta_1, \beta_2)$ be the desired coefficients in a linear regress
 \mathcal{L}(\beta) := \frac{1}{N} \sum_{i=1}^N (y_i - \beta_1 x_{i1} - \beta_2 x_{i2})^2.
 \end{equation}
 
-Recall that we wish to penalize the size of the coefficients, so we impose a constraint on the size of $\beta$. More precisely, we seek to solve
+Recall that we wish to penalize the size of the coefficients in order to not over fit our model, so we impose a constraint on the size of $\beta$. More precisely, we seek to solve the \textbf{constrained optimization problem:}
 \begin{align}
 \min_{\beta}\; &\mathcal{L}_{\lambda} (\beta) \\
 |\beta_1|^p + |\beta_2|^p &\leq C,
 \end{align}
 
-for $p=1, 2$. Let's define $g(\beta) = |\beta_1|^p + |\beta_2|^p$, and for now, focus on $p=2$. Referring to the figure on the right below, the level sets of $g$ are spheres. ie.
+for $p=1, 2$. \\\\
+
+\textbf{Common Question:} Why do we choose $p=1$ or $p=2$? Why not some other p?\\\\
+
+\textbf{Answer:} 
+\begin{itemize}
+\item The norm $L^2$ (ie. $p=2$ )  is very well behaved and is related to the equation for a sphere ($x^2+y^2 = r^2$). Recall that we have an exact solution to the linear regression problem, ie. (1.1), when we choose our norm
+to be $L^2$ (as we have above, known as ordinary least squares - there is no exact solution if we replace the exponent $2$ in (1.1) with a $1$). 
+\item The constant surfaces of $L^2$ (level surfaces, ie. where $x^2 + y^2 = r^2$) are the surfaces of constant distance from the origin.
+\item Thinking of a convex function $f(x) = x^2$, this has a constant second derivative $f''(x) = 2$ so it's \textbf{uniformly convex} - meaning we have stability, uniqueness, etc when minimizing with respect to this norm generally.
+\item $p=1$ is rather unique in that it provides a way of \emph{regularizing which results in sparse coefficients } (ie. many zero coefficients, allowing you to choose the most important features). This is explained in these notes below.
+\item There isn't really any other advantage to using some other $L^p$ space for $p > 2$, yet many disadvantages (such as degeneracy). 
+\end{itemize}
+
+Let's define $g(\beta) = |\beta_1|^p + |\beta_2|^p$, and for now, focus on $p=2$. Referring to the figure on the right below, we seek to minimize (1.1) with some constraint
 \[ \beta_1^2 + \beta_2^2 \leq C.\]
 
-How do we maximize this? Imagine to fix ideas that $C=1$ so that $\beta_1^2 + \beta_2^2 \leq 1$, so that we seek to solve
+The size of the constraint depends on how strong we want our regularization to be, and we choose the constant $C$ which gives the best performance on test data (as in lecture). More on this below.\\\\
+
+
+How do we minimize this? Imagine to fix ideas that $C=1$ so that $\beta_1^2 + \beta_2^2 \leq 1$, and we seek to solve
 \begin{align}
 \min_{\beta} \; &\mathcal{L}_{\lambda} (\beta) \\
-\beta_1^2 + \beta_2^2 &\leq 1,
+\beta_1^2 + \beta_2^2 &\leq 1.
 \end{align}
 
 \section{Derivation of Lagrange Multipliers}
 
 The following facts will make the above clear:
 \begin{itemize}
-\item $ \beta \mapsto \mathcal{L}(\beta)$ is constant along level sets by definition.
-\item $ \beta \mapsto \mathcal{L}(\beta)$ changes only in the direction \textbf{orthogonal} to the level sets, and this is given by $\nabla_{\beta} \mathcal{L}(\beta)$. 
+\item $ \beta \mapsto \mathcal{L}(\beta)$ is constant along \emph{level sets} (ie. where $\mathcal{L}(\beta) = \textrm{ constant } $) by definition.
+\item $ \beta \mapsto \mathcal{L}(\beta)$ changes only in the direction \textbf{orthogonal} to the level sets, and this is given by $\nabla_{\beta} \mathcal{L}(\beta)$. This is clear because
+in any direction along the surface, $\mathcal{L}$ is constant. 
+
 \item \textbf{Case 1:} If $\nabla \mathcal{L}(\beta_0) = 0$ for some $\mathbf{\beta^0}$ in $\beta_1^2 + \beta_2^2 < 1$ then we solve as we do in normal calculus. 
 \item  \textbf{Case 2:} If $\nabla \mathcal{L}(\beta_0) \neq 0$ in $\beta_1^2 + \beta_2^2 < 1$. Then the minimum occurs on the boundary of $\beta_1^2 + \beta_2^2$. This is the Lagrange multiplier case.
 \item Recall the vector orthogonal to the level set is the gradient vector. So if $g(\beta_1,\beta_2) = \beta_1^2 + \beta_2^2$, then the orthogonal vector to the surface $\beta_1^2 + \beta_2^2$ is in the direction
@@ -123,4 +142,21 @@ On the other hand, when $|\beta_1| + |\beta_2| = C$, we see that the level set o
 
 \textbf{Conclusion:} As a result, Lasso tends to result in \emph{sparser} coefficients (ie. many zero coefficients), while Ridge generally distributes the error more evenly among the coefficients. 
 
+\section{How much of a constraint do we use?}
+
+Recall from lecture that we want to train a model by solving the problem:
+
+\begin{align}
+\min_{\beta}\; &\mathcal{L}_{\lambda} (\beta | (x_i,y_i) = \textrm{ training data }) \\
+&|\beta_1|^p + |\beta_2|^p \leq C.
+\end{align}
+
+Let's denote $\beta_C$ as the solution to the above constrained optimization problem (note it depends on $C$), so that our model is
+\[ f_C(x) = \beta_{C} \cdot x.\]
+
+ Then the optimal C, denoted $C^*$ is determined by
+
+\begin{equation}
+C^* = \textrm{argmin}_C \frac{\sum_{i=1}^N (y_i - f_C(x_i))^2}{\sum_{i=1}^N (y_i - \bar y)^2}.
+\end{equation}
 \end{document}
