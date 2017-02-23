@@ -93,8 +93,8 @@ for $p=1, 2$. \\\\
 \textbf{Answer:} 
 \begin{itemize}
 \item The norm $L^2$ (ie. $p=2$ )  is very well behaved and is related to the equation for a sphere ($x^2+y^2 = r^2$). Recall that we have an exact solution to the linear regression problem, ie. (1.1), when we choose our norm
-to be $L^2$ (as we have above, known as ordinary least squares - there is no exact solution if we replace the exponent $2$ in (1.1) with a $1$). 
-\item The constant surfaces of $L^2$ (level surfaces, ie. where $x^2 + y^2 = r^2$) are the surfaces of constant distance from the origin.
+to be $L^2$ (as we have above, known as ordinary least squares - there is no exact solution if we replace the exponent $2$ in (1.1) with a $1$). For $L^1$ we can have many solutions to the same problem. ie. $|1/2| + |1/2| = 1$ and $|1|+|0|=1$. 
+\item The constant surfaces of $L^2$ (level surfaces, ie. where $x^2 + y^2 = r^2$) are the surfaces of constant distance from the origin, meaning that distances are rotationally invariant (why would we want to count certain directions more than others?)
 \item Thinking of a convex function $f(x) = x^2$, this has a constant second derivative $f''(x) = 2$ so it's \textbf{uniformly convex} - meaning we have stability, uniqueness, etc when minimizing with respect to this norm generally.
 \item $p=1$ is rather unique in that it provides a way of \emph{regularizing which results in sparse coefficients } (ie. many zero coefficients, allowing you to choose the most important features). This is explained in these notes below.
 \item There isn't really any other advantage to using some other $L^p$ space for $p > 2$, yet many disadvantages (such as degeneracy). 
